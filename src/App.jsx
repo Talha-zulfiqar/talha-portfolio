@@ -1,31 +1,39 @@
-import { useEffect, useState } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Timeline from './components/Timeline'
-import DevLinkCaseStudy from './components/DevLinkCaseStudy'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+﻿import { useEffect, useState } from "react"
+import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
+import About from "./components/About"
+import Skills from "./components/Skills"
+import Timeline from "./components/Timeline"
+import DevLinkCaseStudy from "./components/DevLinkCaseStudy"
+import Projects from "./components/Projects"
+import Contact from "./components/Contact"
+import Footer from "./components/Footer"
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 600)
+    const root = document.documentElement
+    if (darkMode) {
+      root.classList.add("dark")
+      root.classList.remove("light")
+    } else {
+      root.classList.add("light")
+      root.classList.remove("dark")
     }
+  }, [darkMode])
 
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 600)
     handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <div className="bg-[var(--site-bg)] font-['DM_Sans'] text-white">
-      <Navbar />
+    <div className={darkMode ? "bg-[#0a0a0f] text-white font-sans min-h-screen transition-colors duration-300" : "bg-gray-50 text-gray-900 font-sans min-h-screen transition-colors duration-300"}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
         <Hero />
         <About />
@@ -40,8 +48,8 @@ function App() {
         <button
           type="button"
           aria-label="Back to top"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 rounded-full bg-purple-600 p-4 text-white shadow-2xl shadow-purple-950/40 transition hover:-translate-y-1 hover:bg-purple-500"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 z-50 rounded-full bg-purple-600 p-4 text-white shadow-2xl transition hover:-translate-y-1 hover:bg-purple-500"
         >
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M6 14l6-6 6 6" strokeLinecap="round" strokeLinejoin="round" />
