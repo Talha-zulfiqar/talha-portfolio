@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react"
+import { motion, useScroll, useSpring } from "framer-motion"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import About from "./components/About"
@@ -13,8 +14,12 @@ function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
+  const { scrollYProgress } = useScroll()
+  const progressScaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
+
   useEffect(() => {
     const root = document.documentElement
+    root.setAttribute("data-theme", darkMode ? "dark" : "light")
     if (darkMode) {
       root.classList.add("dark")
       root.classList.remove("light")
@@ -33,6 +38,10 @@ function App() {
 
   return (
     <div className={darkMode ? "bg-[#0a0a0f] text-white font-sans min-h-screen transition-colors duration-300" : "bg-gray-50 text-gray-900 font-sans min-h-screen transition-colors duration-300"}>
+      <motion.div
+        style={{ scaleX: progressScaleX }}
+        className="fixed left-0 top-0 z-[60] h-1 w-full origin-left bg-gradient-to-r from-purple-500 via-fuchsia-500 to-cyan-400"
+      />
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
         <Hero />

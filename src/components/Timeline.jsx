@@ -58,7 +58,7 @@ function Timeline() {
                     </>
                   )}
 
-                  <span className="absolute left-[0.55rem] top-10 h-4 w-4 rounded-full border-4 border-[#0a0a0f] bg-gradient-to-r from-purple-500 to-cyan-400 shadow-lg shadow-purple-500/40 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2" />
+                  <span className="timeline-dot absolute left-[0.55rem] top-10 h-4 w-4 rounded-full border-4 border-[#0a0a0f] bg-gradient-to-r from-purple-500 to-cyan-400 shadow-lg shadow-purple-500/40 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2" />
                 </motion.div>
               )
             })}
