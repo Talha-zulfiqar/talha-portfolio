@@ -22,9 +22,10 @@ function Skills() {
               key={category.title}
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 40 }}
+              whileHover={{ y: -8 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.05 }}
-              className="glass-card group rounded-3xl p-6 transition hover:-translate-y-1 hover:shadow-[0_0_35px_rgba(124,58,237,0.22)]"
+              className="glass-card group rounded-3xl p-6 transition-shadow hover:shadow-[0_0_35px_rgba(124,58,237,0.22)]"
             >
               <div className="flex items-center justify-between">
                 <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white">{category.title}</h3>

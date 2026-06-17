@@ -290,3 +290,113 @@ section {
 
 /* Social icons */
 .light .text-white\/70 { color: #4b5563 !important; }
+
+/* Light mode polish: timeline node ring blends with the page */
+html[data-theme='light'] .timeline-dot {
+  border-color: #e2e8f0 !important;
+}
+
+/* Animated gradient text shimmer */
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Animated underline for nav links */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #a855f7, #fbbf24, #22d3ee);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Golden shimmer on nav links */
+.nav-shimmer {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-shimmer:hover {
+  color: #fde68a !important;
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+}
+
+/* Shimmering gold gradient text */
+.text-gradient-gold {
+  background-image: linear-gradient(90deg, #f59e0b, #fcd34d, #fde68a, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero floating particles */
+.hero-particle {
+  background: radial-gradient(circle, rgba(253, 224, 71, 0.95), rgba(253, 224, 71, 0));
+  box-shadow: 0 0 8px rgba(253, 224, 71, 0.55);
+  opacity: 0.7;
+}
+
+/* Project tiles: warm gallery light on hover */
+.gallery-light {
+  background: radial-gradient(130% 90% at 50% 0%, rgba(253, 224, 71, 0.12), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-tile:hover .gallery-light {
+  opacity: 1;
+}
+
+/* Subtle floating loop for accents */
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-soft {
+  animation: floatSoft 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient,
+  .animate-float-soft,
+  .animate-blob,
+  .float-chevron,
+  .glow-pulse,
+  .cursor-blink,
+  .animate-typing {
+    animation: none !important;
+  }
+}

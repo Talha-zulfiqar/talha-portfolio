@@ -61,11 +61,13 @@ function Projects() {
               key={project.title}
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 40 }}
+              whileHover={{ y: -10 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="glass-card group rounded-3xl p-6 transition hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(124,58,237,0.25)]"
+              className="gallery-tile glass-card group relative overflow-hidden rounded-3xl p-6 transition-shadow hover:shadow-[0_18px_60px_rgba(212,175,55,0.22)]"
             >
-              <div className="mb-4 flex items-center justify-between gap-3">
+              <span className="gallery-light pointer-events-none absolute inset-0" aria-hidden="true" />
+              <div className="relative mb-4 flex items-center justify-between gap-3">
                 <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-100">
                   {project.category}
                 </span>
@@ -86,10 +88,10 @@ function Projects() {
                 )}
               </div>
 
-              <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white">{project.title}</h3>
-              <p className="mt-3 min-h-[96px] text-sm leading-7 text-slate-300">{project.desc}</p>
+              <h3 className="relative font-['Space_Grotesk'] text-xl font-semibold text-white">{project.title}</h3>
+              <p className="relative mt-3 min-h-[96px] text-sm leading-7 text-slate-300">{project.desc}</p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="relative mt-5 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span key={tag} className="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-100">
                     {tag}
