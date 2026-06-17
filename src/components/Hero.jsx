@@ -19,7 +19,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-6 rounded-full border border-purple-500/40 bg-white/5 px-5 py-2 text-sm font-medium text-slate-200 backdrop-blur-md"
+          className="animate-float-soft mb-6 rounded-full border border-purple-500/40 bg-white/5 px-5 py-2 text-sm font-medium text-slate-200 backdrop-blur-md"
         >
           👋 Available for Full-time Roles
         </motion.div>
@@ -31,7 +31,7 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="font-['Space_Grotesk'] text-5xl font-bold tracking-tight md:text-7xl"
         >
-          <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-300 bg-clip-text text-transparent">
+          <span className="animate-gradient bg-gradient-to-r from-purple-400 via-violet-400 to-cyan-300 bg-clip-text text-transparent">
             Muhammad Talha
           </span>
         </motion.h1>
@@ -102,31 +102,37 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-12 flex items-center gap-4"
         >
-          <a
+          <motion.a
             href="https://github.com/Talha-zulfiqar"
             target="_blank"
             rel="noreferrer"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:-translate-y-1 hover:border-purple-500 hover:text-purple-300"
+            whileHover={{ y: -6, scale: 1.12 }}
+            whileTap={{ scale: 0.94 }}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition-colors hover:border-purple-500 hover:text-purple-300"
             aria-label="GitHub profile"
           >
             <FaGithub />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="https://www.linkedin.com/in/muhammad-talha-25801a215/"
             target="_blank"
             rel="noreferrer"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:-translate-y-1 hover:border-cyan-400 hover:text-cyan-300"
+            whileHover={{ y: -6, scale: 1.12 }}
+            whileTap={{ scale: 0.94 }}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition-colors hover:border-cyan-400 hover:text-cyan-300"
             aria-label="LinkedIn profile"
           >
             <FaLinkedin />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="mailto:talhazulfiqar8334@gmail.com"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:-translate-y-1 hover:border-emerald-400 hover:text-emerald-300"
+            whileHover={{ y: -6, scale: 1.12 }}
+            whileTap={{ scale: 0.94 }}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition-colors hover:border-emerald-400 hover:text-emerald-300"
             aria-label="Email Talha"
           >
             <FaEnvelope />
-          </a>
+          </motion.a>
         </motion.div>
       </div>
 

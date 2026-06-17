@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="border-t border-white/10 px-6 py-10 md:px-20">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 text-center">
-        <p className="font-['Space_Grotesk'] text-lg font-semibold text-transparent bg-gradient-to-r from-purple-400 to-cyan-300 bg-clip-text">
+        <p className="animate-gradient font-['Space_Grotesk'] text-lg font-semibold text-transparent bg-gradient-to-r from-purple-400 to-cyan-300 bg-clip-text">
           Designed & Built by Muhammad Talha
         </p>
 
