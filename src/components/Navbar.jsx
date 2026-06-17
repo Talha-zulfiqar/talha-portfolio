@@ -26,11 +26,11 @@ function Navbar({ darkMode, setDarkMode }) {
     <header className={scrolled ? "fixed top-0 z-50 w-full bg-black/55 shadow-2xl backdrop-blur-xl transition-all duration-300" : "fixed top-0 z-50 w-full bg-black/30 backdrop-blur-md transition-all duration-300"}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-20">
         <Link to="hero" smooth={true} duration={600} className="cursor-pointer text-2xl font-bold">
-          <span className="bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">MT</span>
+          <span className="animate-gradient bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">MT</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.to} to={link.to} smooth={true} offset={-80} duration={600} className="cursor-pointer text-sm font-medium text-slate-300 hover:text-white transition">
+            <Link key={link.to} to={link.to} smooth={true} offset={-80} duration={600} className="nav-underline nav-shimmer cursor-pointer text-sm font-medium text-slate-300 hover:text-white transition">
               {link.label}
             </Link>
           ))}
