@@ -373,80 +373,6 @@ html[data-theme='light'] .timeline-dot {
   opacity: 1;
 }
 
-/* Featured Art gallery cards */
-.art-img {
-  filter: saturate(0.92) brightness(0.9);
-}
-
-.art-card:hover .art-img {
-  filter: saturate(1.08) brightness(1.06);
-}
-
-.art-spotlight {
-  background: radial-gradient(120% 80% at 50% -10%, rgba(253, 224, 71, 0.18), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.art-card:hover .art-spotlight {
-  opacity: 1;
-}
-
-.art-card {
-  transition: box-shadow 0.5s ease;
-}
-
-.art-card:hover {
-  box-shadow: 0 24px 80px rgba(212, 175, 55, 0.22);
-}
-
-.metadata {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.1) 60%, transparent);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
-
-.art-card:hover .metadata,
-.art-card:focus-within .metadata {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Overlay text stays light on its dark scrim in both themes */
-.metadata h3,
-.art-lightbox h3 {
-  color: #ffffff !important;
-}
-
-.metadata p,
-.art-lightbox p {
-  color: rgba(254, 243, 199, 0.85) !important;
-}
-
-@media (hover: none) {
-  .metadata {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.025);
-  }
-}
-
-.art-breathe {
-  animation: breathe 7s ease-in-out infinite;
-  will-change: transform;
-}
-
 /* Subtle floating loop for accents */
 @keyframes floatSoft {
   0%,
@@ -470,8 +396,7 @@ html[data-theme='light'] .timeline-dot {
   .float-chevron,
   .glow-pulse,
   .cursor-blink,
-  .animate-typing,
-  .art-breathe {
+  .animate-typing {
     animation: none !important;
   }
 }

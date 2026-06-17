@@ -7,7 +7,6 @@ import Skills from "./components/Skills"
 import Timeline from "./components/Timeline"
 import DevLinkCaseStudy from "./components/DevLinkCaseStudy"
 import Projects from "./components/Projects"
-import FeaturedArt from "./components/FeaturedArt"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
@@ -51,7 +50,6 @@ function App() {
         <Timeline />
         <DevLinkCaseStudy />
         <Projects />
-        <FeaturedArt />
         <Contact />
       </main>
       <Footer />
