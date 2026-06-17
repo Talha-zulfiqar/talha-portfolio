@@ -78,6 +78,23 @@ function Hero() {
 
       <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
         <motion.div
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.85, y: 30 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="animate-float-soft mb-8"
+        >
+          <div className="rounded-full bg-gradient-to-tr from-purple-500 via-violet-400 to-amber-300 p-[3px] shadow-2xl shadow-purple-950/40">
+            <img
+              src="/talha.webp"
+              alt="Muhammad Talha"
+              loading="eager"
+              className="h-32 w-32 rounded-full object-cover md:h-40 md:w-40"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 40 }}
           viewport={{ once: true }}
