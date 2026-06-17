@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Skills", to: "skills" },
   { label: "Journey", to: "journey" },
   { label: "Projects", to: "projects" },
+  { label: "Art", to: "art" },
   { label: "Contact", to: "contact" },
 ]
 
@@ -30,7 +31,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.to} to={link.to} smooth={true} offset={-80} duration={600} className="nav-underline cursor-pointer text-sm font-medium text-slate-300 hover:text-white transition">
+            <Link key={link.to} to={link.to} smooth={true} offset={-80} duration={600} className="nav-underline nav-shimmer cursor-pointer text-sm font-medium text-slate-300 hover:text-white transition">
               {link.label}
             </Link>
           ))}

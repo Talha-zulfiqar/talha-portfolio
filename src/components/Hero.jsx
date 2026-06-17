@@ -1,19 +1,82 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { FaChevronDown, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Link } from 'react-scroll'
 
-function Hero() {
-  return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-20 md:px-20">
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="hero-blob animate-blob absolute left-[-10%] top-[-5%] h-80 w-80 rounded-full bg-purple-600/50" />
-        <div className="hero-blob animate-blob animation-delay-2000 absolute right-[10%] top-[15%] h-72 w-72 rounded-full bg-cyan-400/40" />
-        <div className="hero-blob animate-blob animation-delay-4000 absolute bottom-[10%] left-[30%] h-96 w-96 rounded-full bg-fuchsia-500/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04),transparent_35%)]" />
-      </div>
+const particles = [
+  { left: '12%', top: '22%', size: 6, depth: 26, delay: '0s', dur: '7s' },
+  { left: '82%', top: '18%', size: 4, depth: 40, delay: '1.2s', dur: '9s' },
+  { left: '68%', top: '70%', size: 8, depth: 18, delay: '0.6s', dur: '8s' },
+  { left: '28%', top: '78%', size: 5, depth: 34, delay: '2s', dur: '10s' },
+  { left: '45%', top: '12%', size: 3, depth: 48, delay: '1.6s', dur: '6.5s' },
+  { left: '90%', top: '52%', size: 5, depth: 22, delay: '0.3s', dur: '8.5s' },
+  { left: '8%', top: '58%', size: 4, depth: 38, delay: '2.4s', dur: '7.5s' },
+  { left: '55%', top: '85%', size: 6, depth: 28, delay: '1s', dur: '9.5s' },
+]
 
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
+function Hero() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const blobsY = useTransform(scrollYProgress, [0, 1], [0, 120])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -60])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0])
+
+  const pointerX = useMotionValue(0)
+  const pointerY = useMotionValue(0)
+  const mx = useSpring(pointerX, { stiffness: 60, damping: 18 })
+  const my = useSpring(pointerY, { stiffness: 60, damping: 18 })
+  const blobX = useTransform(mx, (v) => v * 40)
+  const blobX2 = useTransform(mx, (v) => v * -30)
+  const blobY = useTransform(my, (v) => v * 40)
+  const blobY2 = useTransform(my, (v) => v * -30)
+  const particleX = useTransform(mx, (v) => v * 36)
+  const particleY = useTransform(my, (v) => v * 36)
+
+  const handlePointer = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    pointerX.set((e.clientX - rect.left) / rect.width - 0.5)
+    pointerY.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+
+  const resetPointer = () => {
+    pointerX.set(0)
+    pointerY.set(0)
+  }
+
+  return (
+    <section
+      id="hero"
+      ref={sectionRef}
+      onMouseMove={handlePointer}
+      onMouseLeave={resetPointer}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-20 md:px-20"
+    >
+      <motion.div style={{ y: blobsY }} className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div style={{ x: blobX, y: blobY }} className="hero-blob animate-blob absolute left-[-10%] top-[-5%] h-80 w-80 rounded-full bg-purple-600/50" />
+        <motion.div style={{ x: blobX2, y: blobY }} className="hero-blob animate-blob animation-delay-2000 absolute right-[10%] top-[15%] h-72 w-72 rounded-full bg-cyan-400/40" />
+        <motion.div style={{ x: blobX, y: blobY2 }} className="hero-blob animate-blob animation-delay-4000 absolute bottom-[10%] left-[30%] h-96 w-96 rounded-full bg-amber-400/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04),transparent_35%)]" />
+        <motion.div style={{ x: particleX, y: particleY }} className="absolute inset-0">
+          {particles.map((p, i) => (
+            <span
+              key={i}
+              style={{
+                left: p.left,
+                top: p.top,
+                width: p.size,
+                height: p.size,
+                animationDelay: p.delay,
+                animationDuration: p.dur,
+              }}
+              className="hero-particle animate-float-soft absolute rounded-full"
+              aria-hidden="true"
+            />
+          ))}
+        </motion.div>
+      </motion.div>
+
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
         <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 40 }}
@@ -134,7 +197,7 @@ function Hero() {
             <FaEnvelope />
           </motion.a>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         whileInView={{ opacity: 1, y: 0 }}

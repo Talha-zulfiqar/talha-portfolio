@@ -7,6 +7,7 @@ import Skills from "./components/Skills"
 import Timeline from "./components/Timeline"
 import DevLinkCaseStudy from "./components/DevLinkCaseStudy"
 import Projects from "./components/Projects"
+import FeaturedArt from "./components/FeaturedArt"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
@@ -40,7 +41,7 @@ function App() {
     <div className={darkMode ? "bg-[#0a0a0f] text-white font-sans min-h-screen transition-colors duration-300" : "bg-gray-50 text-gray-900 font-sans min-h-screen transition-colors duration-300"}>
       <motion.div
         style={{ scaleX: progressScaleX }}
-        className="fixed left-0 top-0 z-[60] h-1 w-full origin-left bg-gradient-to-r from-purple-500 via-fuchsia-500 to-cyan-400"
+        className="fixed left-0 top-0 z-[60] h-1 w-full origin-left bg-gradient-to-r from-purple-500 via-amber-300 to-cyan-400"
       />
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
@@ -50,6 +51,7 @@ function App() {
         <Timeline />
         <DevLinkCaseStudy />
         <Projects />
+        <FeaturedArt />
         <Contact />
       </main>
       <Footer />
